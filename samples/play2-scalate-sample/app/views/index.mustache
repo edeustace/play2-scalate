@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Hello, {{name}}</title>
+    </head>
+    <body>
+        <p>Hello {{name}}</p>
+        <p>You have just won <b>${{value}}</b>!</p>
+        {{#in_ca}}
+        <p>Well, <b>${{taxed_value}}</b>, after taxes.</p>
+        {{/in_ca}}
+    </body>
+</html>
