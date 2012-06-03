@@ -38,12 +38,12 @@ val appDependencies = Seq(
 	"org.fusesource.scalate" % "scalate-core" % "1.5.3"
 )
 ```
-* Write templates in ```app/views``` directory of your application (template filenames must end with `.jade`, `.mustache` or `.scaml`)  
+* Write templates in the ```app/views``` directory of your application (template filenames must end with `.jade`, `.mustache` or `.scaml`)  
 
 * Use the following line to render template in your controllers :  
 
 ```
-Ok(Template.render("sample.mustache",Map("varName">"something pass to template")))
+Ok(Template.render("sample.mustache",Map("varName"->"something to pass to the template")))
 ```
 
 ### Samples
@@ -55,9 +55,8 @@ play2-scalate\samples\play2-scalate-sample
 
 Clone this repo, ```play run``` in this directory and look at the samples.
 
-Samples provides views for mustache, scaml and jade templates.
+Samples provide views for mustache, scaml and jade templates.
 
 
 ### TODO
 * Include Play objects (request, session, routes, …) in the scope of templates
-* Pre-compilation ?
