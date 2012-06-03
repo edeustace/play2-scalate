@@ -2,51 +2,62 @@
 
 ### About
 
-A simple [play 2.0](http://www.playframework.org) plugin for using scalate templates as view rendering in play 2.0.
+A very simple [play 2.0](http://www.playframework.org) plugin for using scalate templates as view rendering in play 2.0.
 
 For more information, see [Scalate](http://scalate.fusesource.org/)
 
 
-Scalate markups :
+Tested scalate markups :
 
 * [mustache](http://mustache.github.com/)
 * [scaml](http://scalate.fusesource.org/documentation/scaml-reference.html)
 * [jade](http://jade-lang.com/)
 
 
-Work in progress…
+### How to use this plugin
+
+* Clone this repository  
+
+```
+git clone git@github.com:adetante/play2-scalate.git
+```
+* Build and publish the plugin to your local repository 
+
+```
+cd play2-scalate/project-code
+play
+// In the play console, type :
+publish-local
+```
+* Add the following lines to the dependencies in your own project :
+
+```
+// In your project/Build.scala :
+val appDependencies = Seq(
+	"play2-scalate" %% "play2-scalate" % "0.1-SNAPSHOT",
+	"org.fusesource.scalate" % "scalate-core" % "1.5.3"
+)
+```
+* Write templates in ```app/views``` directory of your application (template filenames must end with `.jade`, `.mustache` or `.scaml`)  
+
+* Use the following line to render template in your controllers :  
+
+```
+Ok(Template.render("sample.mustache",Map("varName">"something pass to template")))
+```
 
 ### Samples
 
-Controller using mustache rendering :
-
+A sample webapp can be found in the following path :  
 ```
-def index = Action {implicit request=>
-    Ok(Template.render("index.mustache",Map(
-      "name"->"Chris",
-      "value" -> 10000,
-      "taxed_value" -> (10000 - (10000 * 0.4)),
-      "in_ca" -> true
-    )))
-  }
+play2-scalate\samples\play2-scalate-sample
 ```
 
-And the template :
+Clone this repo, ```play run``` in this directory and look at the samples.
 
-```
-<!DOCTYPE html>
+Samples provides views for mustache, scaml and jade templates.
 
-<html>
-    <head>
-        <title>Hello, {{name}}</title>
-    </head>
-    <body>
-        <p>Hello {{name}}</p>
-        <p>You have just won <b>${{value}}</b>!</p>
-        {{#in_ca}}
-        <p>Well, <b>${{taxed_value}}</b>, after taxes.</p>
-        {{/in_ca}}
-    </body>
-</html>
-```
 
+### TODO
+* Include Play objects (request, session, routes, …) in the scope of templates
+* Pre-compilation ?

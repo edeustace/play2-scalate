@@ -5,17 +5,18 @@ import play.api.mvc._
 
 object Application extends Controller {
   
-  def indexWithMustache(name:String) = Action {implicit request=>
-    Ok(Template.render("index.mustache",Map(
-      "name"->name,
-      "value" -> 10000,
-      "taxed_value" -> (10000 - (10000 * 0.4)),
-      "in_ca" -> true
-    )))
+  def index()=Action{implicit request=>
+    Ok(views.html.hello())
   }
 
-  def indexWithJade() = Action{ implicit request =>
-    Ok(Template.render("sample.jade"))
+  def renderWithTemplate(templateName:String)=Action{implicit request =>
+    Ok(Template.render("sample."+templateName,Map("values"->persons(10,"Sample","sample@corp.com").toList)))
   }
-  
+
+
+  def persons(nb:Int, name:String,email:String )=
+    for (i <- (0 to nb))
+    yield person(name+"_"+i,email+"_"+i)
+  def person(name:String,email: String)=Map("name"->name,"email"->email)
+
 }
