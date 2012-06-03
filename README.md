@@ -7,7 +7,7 @@ A very simple [play 2.0](http://www.playframework.org) plugin for using scalate 
 For more information, see [Scalate](http://scalate.fusesource.org/)
 
 
-Tested scalate markups :
+Tested scalate templates :
 
 * [mustache](http://mustache.github.com/)
 * [scaml](http://scalate.fusesource.org/documentation/scaml-reference.html)
